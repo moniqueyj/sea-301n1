@@ -31,12 +31,12 @@ articleView.handleAuthorFilter = function() {
     if ($(this).val()) {
         $('articles').hide();
         $('article[data-author="' + $(this).val() + '"]').fadeIn();
-      // TODO: If the select box was changed to an option that has a value, we need to hide all the articles,
+      // : If the select box was changed to an option that has a value, we need to hide all the articles,
       //       and then show just the ones that match for the author that was selected.
       //       Use an "attribute selector" to find those articles, and fade them in for the reader.
 
     } else {
-      // TODO: If the select box was changed to an option that is blank, we should
+      // : If the select box was changed to an option that is blank, we should
       //       show all the articles, except the one article we are using as a template.
        $('articles').fadeIn();
        $('articles.template').hide();
@@ -46,7 +46,7 @@ articleView.handleAuthorFilter = function() {
 };
 
 articleView.handleCategoryFilter = function() {
-  // TODO: Just like we do for #author-filter above, we should handle change events on the #category-filter element.
+  // : Just like we do for #author-filter above, we should handle change events on the #category-filter element.
   //       When an option with a value is selected, hide all the articles, then reveal the matches.
   //       When the blank (default) option is selected, show all the articles, except for the template.
   //       Be sure to reset the #author-filter while you are at it!
@@ -63,7 +63,7 @@ articleView.handleCategoryFilter = function() {
 };
 
 articleView.handleMainNav = function() {
-  // TODO: Add an event handler to .main-nav element that will power the Tabs feature.
+  // : Add an event handler to .main-nav element that will power the Tabs feature.
   //       Clicking any .tab element should hide all the .tab-content sections, and then reveal the
   //       single .tab-content section that is associated with the clicked .tab element.
   //       So: You need to dynamically build a selector string with the correct ID, based on the
@@ -83,7 +83,7 @@ articleView.setTeasers = function() {
     $(this).parent().find('*').fadeIn();
     $(this).hide();
   });
-  // TODO: Add an event handler to reveal all the hidden elements,
+  // : Add an event handler to reveal all the hidden elements,
   //       when the .read-on link is clicked. You can go ahead and hide the
   //       "Read On" link once it has been clicked. Be sure to prevent the default link-click action!
   //       Ideally, we'd attach this as just 1 event handler on the #articles section, and let it
@@ -91,7 +91,7 @@ articleView.setTeasers = function() {
 
 };
 
-// TODO: Call all of the above functions, once we are sure the DOM is ready.
+// : Call all of the above functions, once we are sure the DOM is ready.
 $(document).ready(function(){
   articleView.populateFilters();
   articleView.handleCategoryFilter();
