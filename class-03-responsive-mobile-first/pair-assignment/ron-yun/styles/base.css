@@ -1,5 +1,10 @@
-/* TODO: Add some coordinated colors to make the blog more distinguished:
-         Use an accent color for all links, and remove their underline. */
+/* TODO: Add a rule for images, so they never exceed their container's width. */
+
+img:main-nav {
+  max-width: 100%;
+  height: 1em;
+  width: 1em;
+}
 
 body {
   line-height: 1.5;
@@ -14,14 +19,6 @@ hr {
 
 /*TEXT STYLES
 =======================================*/
-.icon{
-  width: 1em;
-  height: 1em;
-  border: solid black;
-  background-color: #C7E4ED;
-
-
-}
 p {
   font-size: 1em;
 }
@@ -34,10 +31,12 @@ address {
 =======================================*/
 
 a, a:link, a:active {
+  text-decoration: none;
   color: #777;
 }
 
 a:hover, a:focus {
+  color: #29506D;
 }
 
 a:visited {

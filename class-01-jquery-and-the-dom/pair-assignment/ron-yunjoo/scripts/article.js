@@ -1,8 +1,7 @@
 var articles = [];
 
 function Article (opts) {
-  //  Use the js object passed in to complete this contructor function:
-  // Save ALL the properties of `opts` into `this`.
+
   this.title = opts.title;
   this.category = opts.category;
   this.author = opts.author;
@@ -21,10 +20,10 @@ Article.prototype.toHtml = function() {
   $newArticle.find('a[href]').attr('href', this.authorUrl);
   $newArticle.find('a').text(this.author);
   // Include the publication date as a 'title' attribute to show on hover:
-  $newArticle.find('time[pubdate]').attr('value', this.publishedOn)
+  $newArticle.find('time[pubdate]').attr('value', this.publishedOn);
 
   // Display the date as a relative number of "days ago":
-  $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago')
+  $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
 
   $newArticle.append('<hr>');
 
@@ -39,8 +38,8 @@ rawData.sort(function(a,b) {
 
 rawData.forEach(function(ele) {
   articles.push(new Article(ele));
-})
+});
 
 articles.forEach(function(a){
-  $('#articles').append(a.toHtml())
+  $('#articles').append(a.toHtml());
 });
