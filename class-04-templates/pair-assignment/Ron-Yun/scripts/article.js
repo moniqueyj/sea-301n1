@@ -10,7 +10,7 @@ function Article (opts) {
 }
 
 Article.prototype.toHtml = function() {
-  var source = $("#entry-template").text();
+  var source = $("#template").text();
   var template = Handlebars.compile(source);
   // TODO: Use handlebars to render your articles.
   //       - Get your template from the DOM.
