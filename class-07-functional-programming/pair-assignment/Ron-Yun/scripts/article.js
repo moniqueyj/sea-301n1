@@ -2,7 +2,7 @@
 // Pass in to the IIFE a module, upon which objects can be attached for later access.
 (function(module) {
 function Article (opts) {
-  object.keys(opts).forEach(function(e, index, keys) {
+  Object.keys(opts).forEach(function(e, index, keys) {
     this[e] = opts[e];
   },this);
 }
@@ -38,26 +38,24 @@ Article.loadAll = function(rawData) {
 // and process it, then hand off control to the View.
 // TODO: Refactor this function, so it accepts an argument of a callback function (likely a view function)
 // to execute once the loading of articles is done.
-Article.fetchAll = function(next) {
-  webDB.execute('',function(rows) {
-   if(rows.lengh) {
+Article.fetchAll = function() {
+ if(localStorage.rawData) {
+   Article.loadAll(JSON.parse(localStorage.rawData));
+   articleView.initIndexPage();
  } else {
-    $.getJSON('/data/hackerIpsum.json', function(rawData) {
-      rawData.forEach(function(item){
-        var article = new Article(item);
-    });
-    webDB.execute('', function(rows) {
-    });
-  });
-}
-});
-};
+   $.getJSON('/data/hackerIpsum.json', function(rawData) {
+     Article.loadAll(rawData);
+     localStorage.rawData = JSON.stringify(rawData);
+     articleView.initIndexPage();
+   });
+ }
+ };
 
 // TODO: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
 Article.numWordsAll = function() {
   return Article.all.map(function(article) {
     return article.body.match(/\b\w+/g).length;
-    return // Get the total number of words in this article
+  // Get the total number of words in this article
   })
   .reduce(function(a, b) {
     return a+b;// Sum up all the values in the collection
@@ -81,7 +79,7 @@ Article.numWordsByAuthor = function() {
   return Article.allAuthors().map(function(author) {
     return {
       name: author,
-      numWords: Article.all.filter(functon(a) {
+      numWords: Article.all.filter(function(a) {
         return a.author === author;
       })
       .map(function(a){
