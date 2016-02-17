@@ -89,7 +89,7 @@ articleView.create = function() {
     authorUrl: $('#article-author-Url').val(),
     category: $('#article-category').val(),
     body: $('#article-body').val(),
-    publishedOn: $('#article-published: checked').length ? util.today() : null
+    publishedOn: $('#article-published:checked').length ? util.today() : null
   });
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
 $("#articles").append(article.toHtml());
@@ -97,8 +97,8 @@ $("#articles").append(article.toHtml());
 $('pre code').each(function(i, block){
   hljs.highlightBlock(block);
 });
-$("export-field").show();
-$('#article-jason').val(JSON.stringify(article) + ',');
+$("#export-field").show();
+$('#article-json').val(JSON.stringify(article) + ',');
   // TODO: Export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
 };
 
